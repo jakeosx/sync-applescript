@@ -6,17 +6,17 @@
 # version 1.0
 
 # set the folders you want to sync
-# format "/path/to/folder/", "path/to/otherfolder"
+# format "/path/to/folder", "path/to/otherfolder"
 # spaces as spaces, so "/path/to this folder/folder"
 # no trailing / 
 
 ## SETTINGS
 
-set myfolders to {"/path/to this folder/folder"}
+set myfolders to {"/path/to/folder", "path/to/otherfolder"}
 
 # set the name of the folder at destination
 
-set bckup to "bckup"
+set backup to "backup"
 
 ## SCRIPT
 
@@ -44,7 +44,7 @@ set rsync_command to "rsync -av --delete"
 repeat with theurl in myfolders
 	
 	do shell script "echo " & current_path2
-	do shell script rsync_command & " \"" & theurl & "\" \"" & current_path2 & bckup & "\""
+	do shell script rsync_command & " \"" & theurl & "\" \"" & current_path2 & backup & "\""
 	
 end repeat
 
