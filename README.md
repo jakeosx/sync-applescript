@@ -52,8 +52,6 @@ File -> Export, select Application as file format
 
 # Setup
 
-
-
 Set the folders you want to sync:
 
 * format "/path/to/folder/", "path/to/otherfolder"
@@ -94,7 +92,6 @@ Rsync is very powerful and can do lots of damage if you aren't careful. Any chan
 
 The rsync manual: https://download.samba.org/pub/rsync/rsync.html
 
-
 ## What Does That Do? 
 
 Here's what those settings mean:
@@ -103,6 +100,39 @@ Here's what those settings mean:
 * **--delete** deletes the files at the destination that were deleted on the host
 
 Path variables are enclosed in " " so spaces can be allowed. 
+
+# Rsync for FAT32 and exFAT drives 
+
+There are aspects of your files that are not saved on a FAT32 device. Things like permissions and over ship. Additionally the time stamp isn't quite the same, which will result in all the files being copied over each time, rather than just the deltas. 
+
+So, if you want FAT format for its portability, we can tweak the rsync commands some to save time on the syncs. 
+
+```
+rsync -rtv --modify-window=1 <ORIGIN> <DESTINATION>
+```
+
+You can set this by commenting this line (add a # to the beginning)
+
+```
+set rsync_command to "rsync -av --delete"
+```
+
+And in comment this one (remove the # at the begining of the line)
+
+```
+# set rsync_command to "rsync -rtv --modify-window=1"
+```
+
+## What does that do? 
+
+* **-r** recursive; go into any sub directories 
+* **-t** times; preserve the modification times 
+* **-v** verbose 
+* **--modify-window=1** this adds a +/- 1 second window to the time check, which will help with time stamp differences
+
+Note: this will probably cause a re-sync of all files after Daylight Savings, twice a year. 
+
+Source: https://askubuntu.com/questions/112863/rsync-not-working-between-ntfs-fat-and-ext
 
 # All Done 
 

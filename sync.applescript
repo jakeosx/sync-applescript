@@ -38,6 +38,7 @@ end tell
 # rsync man: https://download.samba.org/pub/rsync/rsync.html
 
 set rsync_command to "rsync -av --delete"
+# set rsync_command to "rsync -rtv --modify-window=1"
 
 # repeat rsync with all the folders set above
 
