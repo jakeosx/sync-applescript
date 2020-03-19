@@ -4,7 +4,7 @@ a tool to use rsync to sync files to an external folder
 
 * License: GPLv3.0
 * git: https://github.com/jakeosx/sync.applescript
-* version 1.0
+* version 1.1
 
 # About
 
@@ -63,6 +63,7 @@ Set the folders you want to sync:
 * format "/path/to/folder/", "path/to/otherfolder"
 * spaces as spaces, so "/path/to this folder/folder"
 * no trailing / 
+* one continuous line, don't hit enter! 
 
 ```
 set myfolders to {"/path/to/folder", "path/to/otherfolder"}
@@ -76,7 +77,7 @@ Set the folder name you want all these things to be in. "Backup", for example.
 set backup to "backup"
 ```
 
-If you want everything to go into the same location as the sync app, then just set this variable to blank, like so: 
+If you want everything to go into the same location as the sync app, then just set this variable to blank, like so (the two quotation marks are required, no spaces inside): 
 
 ```
 set backup to ""
@@ -123,7 +124,7 @@ You can set this by changing the setting to "yes"
 set fat32 to "no"
 ```
 
-## What does that do? 
+## What Does That Do? 
 
 * **-r** recursive; go into any sub directories 
 * **-t** times; preserve the modification times 

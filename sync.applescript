@@ -9,6 +9,7 @@
 # format "/path/to/folder", "path/to/otherfolder"
 # spaces as spaces, so "/path/to this folder/folder"
 # no trailing / 
+# one continuous line, don't hit enter! 
 
 ### SETTINGS ### 
 
