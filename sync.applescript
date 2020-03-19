@@ -18,7 +18,11 @@ set myfolders to {"/path/to/folder", "path/to/otherfolder"}
 
 set backup to "backup"
 
-## SCRIPT
+# if your drive is fat32 or exfat, set this to yes
+
+set fat32 to "no"
+
+### SCRIPT ###
 
 # Get the path of where the sync app is located
 
@@ -35,6 +39,12 @@ end tell
 # --delete deletes the files at the destination that were deleted on the host
 # path variables are enclosed in " " so spaces can be allowed
 
+if fat32 = "yes" then
+	display alert "Yes!"
+else
+	display alert "No!"
+end if
+
 # rsync man: https://download.samba.org/pub/rsync/rsync.html
 
 set rsync_command to "rsync -av --delete"
@@ -43,8 +53,8 @@ set rsync_command to "rsync -av --delete"
 
 repeat with theurl in myfolders
 	
-	do shell script "echo " & current_path2
-	do shell script rsync_command & " \"" & theurl & "\" \"" & current_path2 & backup & "\""
+	#do shell script "echo " & current_path2
+	#do shell script rsync_command & " \"" & theurl & "\" \"" & current_path2 & backup & "\""
 	
 end repeat
 
