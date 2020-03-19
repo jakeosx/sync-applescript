@@ -3,14 +3,14 @@
 
 # GPLv3.0
 # git: https://github.com/jakeosx/sync.applescript
-# version 1.0
+# version 1.1
 
 # set the folders you want to sync
 # format "/path/to/folder", "path/to/otherfolder"
 # spaces as spaces, so "/path/to this folder/folder"
 # no trailing / 
 
-## SETTINGS
+### SETTINGS ### 
 
 set myfolders to {"/path/to/folder", "path/to/otherfolder"}
 
@@ -38,16 +38,15 @@ end tell
 # -av archive mode; verbose mode
 # --delete deletes the files at the destination that were deleted on the host
 # path variables are enclosed in " " so spaces can be allowed
-
-if fat32 = "yes" then
-	display alert "Yes!"
-else
-	display alert "No!"
-end if
-
 # rsync man: https://download.samba.org/pub/rsync/rsync.html
 
-set rsync_command to "rsync -av --delete"
+if fat32 = "yes" then
+	set rsync_command to "rsync -rtv --modify-window=1"
+else
+	set rsync_command to "rsync -av --delete"
+end if
+
+display alert rsync_command
 
 # repeat rsync with all the folders set above
 
