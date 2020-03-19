@@ -118,6 +118,7 @@ So, if you want FAT format for its portability, we can tweak the rsync commands 
 rsync -rtv --modify-window=1 <ORIGIN> <DESTINATION>
 ```
 
+<<<<<<< HEAD
 You can set this by changing the setting to "yes"
 
 ```
@@ -125,6 +126,21 @@ set fat32 to "no"
 ```
 
 ## What Does That Do? 
+=======
+You can set this by commenting this line (add a # to the beginning)
+
+```
+set rsync_command to "rsync -av --delete"
+```
+
+And in comment this one (remove the # at the begining of the line)
+
+```
+# set rsync_command to "rsync -rtv --modify-window=1"
+```
+
+## What does that do? 
+>>>>>>> refs/remotes/github/master
 
 * **-r** recursive; go into any sub directories 
 * **-t** times; preserve the modification times 

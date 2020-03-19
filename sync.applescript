@@ -47,8 +47,6 @@ else
 	set rsync_command to "rsync -av --delete"
 end if
 
-display alert rsync_command
-
 # repeat rsync with all the folders set above
 
 repeat with theurl in myfolders
